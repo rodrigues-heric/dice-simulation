@@ -15,8 +15,8 @@ def roll_again(window, label):
 
     # Recreate the widgets
     dice = roll_dice()
-    make_text(window, f'Dice number: {dice}')
-    make_img(window, dice)
+    make_text(window, f'Dice number: {dice}', 14)
+    make_img(window, dice, 54)
     make_button(window, label)
 
 # Return the dice unicode
@@ -33,12 +33,13 @@ def dice_face(number):
     return faces[number]
 
 # Make the window text
-# tkinter object, String -> void
-def make_text(window, msg):
+# tkinter object, String, int -> void
+def make_text(window, msg, font_size):
     t = tkinter.Label(window, 
                         justify=tkinter.CENTER, 
                         pady=20,
-                        text=msg).pack()
+                        text=msg, 
+                        font=(None, font_size)).pack()
 
 # Make the button to roll the dice again
 def make_button(window, label):
@@ -48,8 +49,8 @@ def make_button(window, label):
 
 # Insert the dice "image"
 # tkinter object, Int -> void
-def make_img(window, dice):
-    make_text(window, dice_face(dice))
+def make_img(window, dice, size):
+    make_text(window, dice_face(dice), 54)
 
 # Create and configure the window
 # String, Int, String, String -> tkinter object
@@ -57,8 +58,8 @@ def create_window(title, dice_num, msg, btn_label):
     window = tkinter.Tk()
     window.geometry('300x300')
     window.title(title)
-    make_text(window, msg)
-    make_img(window, dice_num)
+    make_text(window, msg, 14)
+    make_img(window, dice_num, 54)
     make_button(window, btn_label)
     return window
 
